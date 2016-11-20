@@ -4,21 +4,153 @@
     {{partial "host/add-common"}}
 
     <div class="over-hr r-mt20 r-mb20">
-      <span>My Skeleton Driver</span>
+      <span>Dimension Data CloudControl</span>
     </div>
 
-    {{!-- An example input option --}}
     <div class="row">
-      <div class="col-sm-12 col-md-2 form-label">
-        <label class="form-control-static">Size</label>
+      <div class="col-sm-6 col-md-2 form-label">
+          <label class="form-control-static">Datacenter</label>
       </div>
-      <div class="col-sm-12 col-md-4">
+      <div class="col-sm-4 col-md-4">
         <div class="input-group">
           {{input type="text"
             class="form-control"
-            value=model.%%DRIVERNAME%%Config.size
+            value=model.%%DRIVERNAME%%Config.datacenter
           }}
-          <span class="input-group-addon">MB</span>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-2 form-label">
+        <label class="form-control-static">Network Domain</label>
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <div class="input-group">
+          {{input type="text"
+            class="form-control"
+            value=model.%%DRIVERNAME%%Config.networkdomain
+          }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-2 form-label">
+          <label class="form-control-static">Image</label>
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <div class="input-group">
+          {{input type="text"
+            class="form-control"
+            value=model.%%DRIVERNAME%%Config.imageName
+          }}
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-2 form-label">
+          <label class="form-control-static">VLAN</label>
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <div class="input-group">
+          {{input type="text"
+            class="form-control"
+            value=model.%%DRIVERNAME%%Config.vlan
+          }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-2 form-label">
+        <label class="form-control-static">CPUs</label>
+      </div>
+      <div class="col-sm-4 col-md-3">
+        <div class="input-group">
+          {{input type="text"
+            class="form-control"
+            value=model.%%DRIVERNAME%%Config.cpuCount
+          }}
+        </div>
+      </div>
+      <div class="col-sm-2 col-md-1"></div>
+      <div class="col-sm-4 col-md-2 form-label">
+        <label class="form-control-static">Memory (GB)</label>
+      </div>
+      <div class="col-sm-4 col-md-3">
+        <div class="input-group">
+          {{input type="text"
+            class="form-control"
+            value=model.%%DRIVERNAME%%Config.memory
+          }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-2 form-label">
+        <label class="form-control-static">SSH username</label>
+      </div>
+      <div class="col-sm-4 col-md-3">
+        <div class="input-group">
+          {{input type="text"
+            class="form-control"
+            value=model.%%DRIVERNAME%%Config.sshUser
+          }}
+        </div>
+      </div>
+      <div class="col-sm-2 col-md-1"></div>
+      <div class="col-sm-4 col-md-2 form-label">
+        <label class="form-control-static">SSH key</label>
+      </div>
+      <div class="col-sm-4 col-md-3">
+        <div class="input-group">
+          {{input type="text"
+            class="form-control"
+            value=model.%%DRIVERNAME%%Config.sshKey
+          }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-2">
+      </div>
+      <div class="col-sm-4 col-md-4">
+      </div>
+      <div class="col-sm-6 col-md-2 form-label">
+        <label class="form-control-static">Initial SSH password</label>
+      </div>
+      <div class="col-sm-4 col-md-3">
+        <div class="input-group">
+          {{input type="password"
+            class="form-control"
+            value=model.%%DRIVERNAME%%Config.sshBootstrapPassword
+          }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-2 form-label">
+        <label class="form-control-static">MCP username</label>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="input-group">
+          {{input type="text"
+            class="form-control"
+            placeholder="CloudControl user name"
+            value=model.%%DRIVERNAME%%Config.mcpUser
+          }}
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-2 form-label">
+        <label class="form-control-static">MCP password</label>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="input-group">
+          {{input type="password"
+            class="form-control"
+            placeholder="CloudControl password"
+            value=model.%%DRIVERNAME%%Config.mcpPassword
+          }}
         </div>
       </div>
     </div>

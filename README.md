@@ -1,5 +1,5 @@
-# ui-driver-skel
-Skeleton Rancher UI driver for custom docker-machine drivers
+# rancher-ui-driver-ddcloud
+A Rancher UI driver for Dimension Data CloudControl.
 
 ## Setup
 
@@ -25,7 +25,7 @@ For other users to see your driver, you need to build it and host the output on 
 ## Using
 
 * Add a Machine Driver in Rancher (Admin tab -> Settings -> Machine Drivers)
-  * Name: Your `DRIVERNAME` (see above).
+  * Name: `ddcloud`.
   * Download URL: The URL for the driver binary (e.g. `https://azuretesting2.blob.core.windows.net/public/docker-machine-driver-ddcloud`)
   * Custom UI URL: The URL you uploaded the `dist` folder to, e.g. `https://azuretesting2.blob.core.windows.net/public/docker-machine-driver-ddcloud/ui/component.js`)
 * Wait for the driver to become "Active"

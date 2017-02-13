@@ -1,26 +1,23 @@
-/* v----- Do not change anything between here
- *       (the DRIVERNAME placeholder will be automatically replaced during build) */
-define('ui/components/machine/driver-%%DRIVERNAME%%/component', ['exports', 'ember', 'ui/mixins/driver'], function (exports, _ember, _uiMixinsDriver) {
-
+define('ui/components/machine/driver-ddcloud/component', ['exports', 'ember', 'ui/mixins/driver'], function (exports, _ember, _uiMixinsDriver) {
   exports['default'] = _ember['default'].Component.extend(_uiMixinsDriver['default'], {
-    driverName: '%%DRIVERNAME%%',
-/* ^--- And here */
+    driverName: 'ddcloud',
 
-    // Write your component here, starting with setting 'model' to a machine with your config populated
+    // TODO: Use drop-down lists for "mcpRegion", "networkDomain", and "vlan".
+
     bootstrap: function() {
       let config = this.get('store').createRecord({
-        type                  : '%%DRIVERNAME%%Config',
+        type                  : 'ddcloudConfig',
         memory                : 8,
         cpuCount              : 2,
         mcpUser               : "",
         mcpPassword           : "",
         mcpRegion             : "AU",
-        networkdomain         : "Rancher",
+        networkDomain         : "Rancher",
         datacenter            : "AU10",
         vlan                  : "Rancher Primary",
         imageName             : "Ubuntu 14.04 2 CPU",
         sshUser               : "root",
-        sshKey                : "/id_rsa",
+        sshKey                : "",
         sshPort               : 22,
         sshBootstrapPassword  : "5n4u54g3s!!!",
         usePrivateIp          : true,
@@ -36,7 +33,7 @@ define('ui/components/machine/driver-%%DRIVERNAME%%/component', ['exports', 'emb
 
       this.set('model', this.get('store').createRecord({
         type: type,
-        '%%DRIVERNAME%%Config': config,
+        'ddcloudConfig': config,
       }));
     },
 
@@ -47,20 +44,40 @@ define('ui/components/machine/driver-%%DRIVERNAME%%/component', ['exports', 'emb
       var errors = this.get('errors')||[];
 
       // Validate model.
-      if (parseInt(this.get('model.%%DRIVERNAME%%Config.cpuCount'), 10) < 1)
-      {
+      if (!this.get('model.ddcloudConfig.mcpUser'))
+        errors.push('Must specify MCP user name.');
+
+      if (!this.get('model.ddcloudConfig.mcpPassword'))
+        errors.push('Must specify MCP password.');
+
+      if (!this.get('model.ddcloudConfig.mcpRegion'))
+        errors.push('Must specify target MCP region.');
+
+      if (!this.get('model.ddcloudConfig.datacenter'))
+        errors.push('Must specify target datacenter.');
+
+      if (!this.get('model.ddcloudConfig.vlan'))
+        errors.push('Must specify target VLAN.');
+
+      if (!this.get('model.ddcloudConfig.imageName'))
+        errors.push('Must specify target image name.');
+
+      if (!this.get('model.ddcloudConfig.sshUser'))
+        errors.push('Must specify target SSH user name.');
+
+      if (!this.get('model.ddcloudConfig.sshBootstrapPassword'))
+        errors.push('Must specify an initial password to install the SSH key.');
+
+      if (!this.get('model.ddcloudConfig.clientPublicIp') && !this.get('model.ddcloudConfig.usePrivateIp'))
+        errors.push('Client public IP must be specified when not using private IP addressing.');
+
+      if (parseInt(this.get('model.ddcloudConfig.cpuCount'), 10) < 1)
         errors.push('CPU count cannot be less than 1');
-      }
 
-      if (parseInt(this.get('model.%%DRIVERNAME%%Config.memory'), 10) < 1)
-      {
+      if (parseInt(this.get('model.ddcloudConfig.memory'), 10) < 1)
         errors.push('Memory cannot be less than 1GB');
-      }
 
-      // TODO: Validate other properties.
-
-      // Set the array of errors for display,
-      // and return true if saving should continue.
+      // Set the array of errors for display, and return true if saving should continue.
       if (errors.get('length'))
       {
         this.set('errors', errors);

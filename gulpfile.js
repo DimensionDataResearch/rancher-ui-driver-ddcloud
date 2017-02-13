@@ -10,8 +10,6 @@ const replace     = require('gulp-replace');
 const argv        = require('yargs').argv;
 const pkg         = require('./package.json');
 
-const NAME_TOKEN  = '%%DRIVERNAME%%';
-
 const BASE        = 'component/';
 const DIST        = 'dist/';
 const TMP         = 'tmp/';
@@ -44,7 +42,6 @@ gulp.task('js', function() {
   return gulp.src([
     BASE + '*.js'
   ])
-  .pipe(replace(NAME_TOKEN, DRIVER_NAME))
   .pipe(gulpConcat('component.js',{newLine: ';\n'}))
   .pipe(gulp.dest(TMP));
 });
@@ -53,7 +50,6 @@ gulp.task('css', function() {
   return gulp.src([
     BASE + '**.css'
   ])
-  .pipe(replace(NAME_TOKEN, DRIVER_NAME))
   .pipe(gulpConcat('component.css',{newLine: ';\n'}))
   .pipe(gulp.dest(DIST));
 });
@@ -65,7 +61,6 @@ gulp.task('assets', function() {
 
 gulp.task('compiled', ['js'], function() {
   return gulp.src(BASE +'**/*.hbs')
-  .pipe(replace(NAME_TOKEN, DRIVER_NAME))
   .pipe(htmlbars({compiler: emCompiler}))
   .pipe(wrapAmd({
     deps: ['exports', 'ember', 'ui/mixins/driver'],

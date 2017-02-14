@@ -7,6 +7,18 @@
       <span>Dimension Data CloudControl</span>
     </div>
 
+    <style>
+      div.checkbox-container {
+        text-align: right;
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+      input.checkbox-embed {
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+    </style>
+
     <div class="row">
       <div class="col-sm-6 col-md-2 form-label">
           <label class="form-control-static">Datacenter</label>
@@ -20,7 +32,7 @@
         </div>
       </div>
       <div class="col-sm-6 col-md-2 form-label">
-        <label class="form-control-static">Network Domain</label>
+        <label class="form-control-static">Network domain</label>
       </div>
       <div class="col-sm-4 col-md-4">
         <div class="input-group">
@@ -57,7 +69,34 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row form-group">
+      <div class="col-sm-6 col-md-2 form-label">
+          <label class="form-control-static">Private IPv4</label>
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <div class="col-md-8 checkbox-container">
+          {{input type="checkbox"
+            checked=model.ddcloudConfig.usePrivateIp
+            class="form-control checkbox-embed"
+          }}
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-2 form-label">
+          <label class="form-control-static">Rancher public IP</label>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="input-group">
+          {{input type="text"
+            class="form-control"
+            value=model.ddcloudConfig.clientPublicIp
+            disabled=model.ddcloudConfig.usePrivateIp
+            placeholder="Auto-detect"
+          }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row form-group">
       <div class="col-sm-6 col-md-2 form-label">
         <label class="form-control-static">CPUs</label>
       </div>
@@ -97,25 +136,22 @@
       </div>
       <div class="col-sm-2 col-md-1"></div>
       <div class="col-sm-4 col-md-2 form-label">
-        <label class="form-control-static">SSH key</label>
+        <label class="form-control-static">SSH key file</label>
       </div>
       <div class="col-sm-4 col-md-3">
         <div class="input-group">
           {{input type="text"
             class="form-control"
             value=model.ddcloudConfig.sshKey
+            placeholder="Auto-generate"
           }}
         </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-sm-6 col-md-2">
-      </div>
-      <div class="col-sm-4 col-md-4">
-      </div>
+    <div class="row form-group">
       <div class="col-sm-6 col-md-2 form-label">
-        <label class="form-control-static">Initial SSH password</label>
+        <label class="form-control-static">Initial password</label>
       </div>
       <div class="col-sm-4 col-md-3">
         <div class="input-group">
@@ -125,9 +161,13 @@
           }}
         </div>
       </div>
+      <div class="col-sm-6 col-md-2">
+      </div>
+      <div class="col-sm-4 col-md-4">
+      </div>
     </div>
 
-    <div class="row">
+    <div class="row form-group">
       <div class="col-sm-6 col-md-2 form-label">
         <label class="form-control-static">MCP username</label>
       </div>

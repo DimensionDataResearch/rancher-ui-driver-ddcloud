@@ -26,7 +26,7 @@ For other users to see your driver, you need to build it and host the output on 
 
 * Add a Machine Driver in Rancher (Admin tab -> Settings -> Machine Drivers)
   * Name: `ddcloud`.
-  * Download URL: The URL for the driver binary (e.g. `https://azuretesting2.blob.core.windows.net/public/docker-machine-driver-ddcloud`)
-  * Custom UI URL: The URL you uploaded the `dist` folder to, e.g. `https://azuretesting2.blob.core.windows.net/public/ui/component.js`)
+  * Download URL: The URL for the driver binary (e.g. https://azuretesting2.blob.core.windows.net/public/docker-machine-driver-ddcloud)
+  * Custom UI URL: The URL you uploaded the `dist` folder to, e.g. https://azuretesting2.blob.core.windows.net/public/ui/component.js)
 * Wait for the driver to become "Active"
 * Go to Infrastructure -> Hosts -> Add Host, your driver and custom UI should show up.

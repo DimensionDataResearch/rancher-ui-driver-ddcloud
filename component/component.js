@@ -2,7 +2,7 @@ define('ui/components/machine/driver-ddcloud/component', ['exports', 'ember', 'u
   exports['default'] = _ember['default'].Component.extend(_uiMixinsDriver['default'], {
     driverName: 'ddcloud',
 
-    // TODO: Use drop-down lists for "mcpRegion", "networkDomain", and "vlan".
+    // TODO: Use drop-down lists for "mcpRegion", "networkdomain", and "vlan".
 
     bootstrap: function() {
       let config = this.get('store').createRecord({
@@ -12,7 +12,7 @@ define('ui/components/machine/driver-ddcloud/component', ['exports', 'ember', 'u
         mcpUser               : "",
         mcpPassword           : "",
         mcpRegion             : "AU",
-        networkDomain         : "Rancher",
+        networkdomain         : "Rancher",
         datacenter            : "AU10",
         vlan                  : "Rancher Primary",
         imageName             : "Ubuntu 14.04 2 CPU",
@@ -55,6 +55,9 @@ define('ui/components/machine/driver-ddcloud/component', ['exports', 'ember', 'u
 
       if (!this.get('model.ddcloudConfig.datacenter'))
         errors.push('Must specify target datacenter.');
+
+      if (!this.get('model.ddcloudConfig.networkdomain'))
+        errors.push('Must specify target network domain.');
 
       if (!this.get('model.ddcloudConfig.vlan'))
         errors.push('Must specify target VLAN.');

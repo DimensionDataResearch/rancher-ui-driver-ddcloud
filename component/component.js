@@ -21,7 +21,7 @@ define('ui/components/machine/driver-ddcloud/component', ['exports', 'ember', 'u
         sshPort               : 22,
         sshBootstrapPassword  : "5n4u54g3s!!!",
         usePrivateIp          : true,
-        createFirewallRule    : false,
+        createSshFirewallRule : true,
         clientPublicIp        : ""
       });
 

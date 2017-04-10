@@ -195,6 +195,26 @@
       </div>
     </div>
 
+    <div class="row form-group">
+      <div class="col-sm-6 col-md-2">
+      </div>
+      <div class="col-sm-4 col-md-4">
+      </div>
+
+      <div class="col-sm-6 col-md-2 form-label">
+        <label class="form-control-static">MCP region</label>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="input-group">
+          {{input type="text"
+            class="form-control"
+            placeholder="CloudControl region"
+            value=model.ddcloudConfig.mcpRegion
+          }}
+        </div>
+      </div>
+    </div>
+
     {{!-- This partial contains the Labels and Advanced Options fields --}}
     {{partial "host/add-options"}}
   </div>

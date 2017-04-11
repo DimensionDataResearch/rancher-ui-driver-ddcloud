@@ -6,23 +6,24 @@ define('ui/components/machine/driver-ddcloud/component', ['exports', 'ember', 'u
 
     bootstrap: function() {
       let config = this.get('store').createRecord({
-        type                  : 'ddcloudConfig',
-        memory                : 8,
-        cpuCount              : 2,
-        mcpUser               : "",
-        mcpPassword           : "",
-        mcpRegion             : "AU",
-        networkdomain         : "Rancher",
-        datacenter            : "AU10",
-        vlan                  : "Rancher Primary",
-        imageName             : "Ubuntu 14.04 2 CPU",
-        sshUser               : "root",
-        sshKey                : "",
-        sshPort               : 22,
-        sshBootstrapPassword  : "5n4u54g3s!!!",
-        usePrivateIp          : true,
-        createSshFirewallRule : true,
-        clientPublicIp        : ""
+        type                     : 'ddcloudConfig',
+        memory                   : 8,
+        cpuCount                 : 2,
+        mcpUser                  : "",
+        mcpPassword              : "",
+        mcpRegion                : "AU",
+        networkdomain            : "Rancher",
+        datacenter               : "AU10",
+        vlan                     : "Rancher Primary",
+        imageName                : "Ubuntu 14.04 2 CPU",
+        sshUser                  : "root",
+        sshKey                   : "",
+        sshPort                  : 22,
+        sshBootstrapPassword     : "5n4u54g3s!!!",
+        usePrivateIp             : true,
+        createSshFirewallRule    : true,
+        createDockerFirewallRule : true,
+        clientPublicIp           : ""
       });
 
       let type = 'host';

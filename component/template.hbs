@@ -71,7 +71,7 @@
 
     <div class="row form-group">
       <div class="col-sm-6 col-md-2 form-label">
-          <label class="form-control-static">Private IPv4</label>
+          <label class="form-control-static">Use private IP</label>
       </div>
       <div class="col-sm-4 col-md-4">
         <div class="col-md-8 checkbox-container">
@@ -91,6 +91,26 @@
             value=model.ddcloudConfig.clientPublicIp
             disabled=model.ddcloudConfig.usePrivateIp
             placeholder="Auto-detect"
+          }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-sm-6 col-md-2">
+      </div>
+      <div class="col-sm-4 col-md-4">
+      </div>
+
+      <div class="col-sm-6 col-md-2 form-label">
+        <label class="form-control-static">Private IPv4</label>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="input-group">
+          {{input type="text"
+            class="form-control"
+            placeholder="Auto-select"
+            value=model.ddcloudConfig.privateIpv4
           }}
         </div>
       </div>
